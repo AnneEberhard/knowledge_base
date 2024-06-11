@@ -1,12 +1,9 @@
 {% extends "base.html" %} {% block content %}
 <div class="overviewContent">
-
   <div class="articleOverview">
-
       <h2>{{ article.title }}</h2>
       <p>{{ article.text }}</p>
-
+      <p>Autor: {{ article.author }}</p>
   </div>
-
 </div>
 {% endblock %}

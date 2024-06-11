@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from articles.views import add, agb, article_detail, index, legal_notice
+from articles.views import add, agb, article_detail, create_article, index, legal_notice
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +26,5 @@ urlpatterns = [
     path('agb/', agb, name='agb'),
     path('legal-notice/', legal_notice, name='legal_notice'),
     path('article/<int:id>/', article_detail, name='article_detail'),
+    path('create_article/', create_article, name='create_article'),
 ]

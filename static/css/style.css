@@ -66,6 +66,9 @@ a:hover {
 .overviewContent {
   padding: 32px;
   width: 50vw;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .articleOverview {
