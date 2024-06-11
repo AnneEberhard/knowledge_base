@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from django.conf import settings
+from django.conf.urls.static import static
 from articles.views import add, agb, article_detail, index, legal_notice
 
 urlpatterns = [
@@ -26,4 +27,4 @@ urlpatterns = [
     path('agb/', agb, name='agb'),
     path('legal-notice/', legal_notice, name='legal_notice'),
     path('article/<int:id>/', article_detail, name='article_detail'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
