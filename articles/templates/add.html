@@ -1,4 +1,17 @@
-{% extends "base.html" %} 
-{% block content %} 
+{% extends "base.html" %} {% block content %}
+<form onsubmit="save(); return false" method="post">
+  {% csrf_token %}
+  <div class="inputContainer">
+    <div class="inputFieldBox">
+      <input type="text" id="title" placeholder="Titel" class="inputField" />
+      <input name="text" id="text" placeholder="Text" class="inputField" />
+      <input type="text" id="author" placeholder="Autor" class="inputField" />
+    </div>
+  </div>
+  <div class="inputSave">
+    <div></div>
+    <button>Speichern</button>
+  </div>
+</form>
 
 {% endblock %}
