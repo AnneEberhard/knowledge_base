@@ -1,12 +1,13 @@
+<!-- index.html -->
 {% extends "base.html" %} {% block content %}
 <div class="overviewHeader">
   <h1>Knowledge Base</h1>
   <span>Durchsuche unsere großartige Datenbank mit Fachwissen</span>
-  <input id="search" placeholder="Knowledge Base durchsuchen" />
+  <form class="search" method="post">{% csrf_token %} {{ form }}</form>
 </div>
+
 <div class="overviewContent">
-    {% load custom_filters %}
-  {% for article in articles %}
+  {% load custom_filters %} {% for article in articles %}
   <div class="articleOverview">
     <a href="/article/{{ article.id }}/">
       <h2>{{ article.title }}</h2>

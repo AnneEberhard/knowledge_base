@@ -1,16 +1,26 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Article
+from .forms import SearchForm
 
 
 def index(request):
     """
-    Renders the index page that lists all available articles.
+    Renders the index page that lists all available articles if method is GET.
+    Filters to search field input if method is POST.
 
     :param request: HttpRequest object.
     :return: HttpResponse object with the rendered template.
     """
     articles = Article.objects.all()
-    return render(request, "index.html", {'articles': articles})
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            articles = articles.filter(title__icontains=query) | articles.filter(text__icontains=query)
+    else:
+        form = SearchForm()
+
+    return render(request, 'index.html', {'form': form, 'articles': articles})
 
 
 def add(request):
@@ -60,14 +70,3 @@ def article_detail(request, id):
     """
     article = get_object_or_404(Article, id=id)
     return render(request, 'article_detail.html', {'article': article})
-
-
-def create_article(request):
-    if request.method == 'POST':
-        title = request.POST.get('title')
-        text = request.POST.get('text')
-        author = request.POST.get('author')
-        article = Article.objects.create(title=title, text=text, author=author)
-        return redirect('article_detail', id=article.id) 
-    articles = Article.objects.all()
-    return render(request, "index.html", {'articles': articles})

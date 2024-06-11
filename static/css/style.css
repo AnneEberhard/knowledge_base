@@ -37,7 +37,7 @@ a {
   color: rgb(108, 122, 131) !important;
 }
 
-a:hover {
+.headerLink:hover {
   color: white !important;
 }
 
@@ -84,11 +84,21 @@ h2 {
   color: rgb(108, 122, 131) !important;
 }
 
-#search {
+.search {
   margin: 32px;
   padding: 8px;
   border-radius: 10px;
   width: 30%;
+}
+
+.search-input {
+  border: none;
+  width: 100%;
+}
+
+input:focus-visible {
+  border: none !important;
+  outline:rgb(236, 241, 245);
 }
 
 button {
