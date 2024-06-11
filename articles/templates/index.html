@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block content %}
+<div class="overviewHeader">
+  <h1>Knowledge Base</h1>
+  <span>Durchsuche unsere großartige Datenbank mit Fachwissen</span>
+  <input id="search" placeholder="Knowledge Base durchsuchen"/>
+</div>
+<div id="overviewContent">
+  {% for article in articles %}
+  <div onclick="location.href='/article/{{ article.id }}/'" class="">
+    <h2>{{ article.title }}</h2>
+    <p>{{ article.text }}</p>
+  </div>
+  {% endfor %}
+</div>
+<button onclick="location.href='/add/'" class="absoluteRight">+ Hinzufügen</button>
+{% endblock %}
