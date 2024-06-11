@@ -1,6 +1,7 @@
 from django.utils import timezone
 from django.db import models
 
+
 class Article(models.Model):
     """
     Model für einen Artikel in der Knowledge Base.

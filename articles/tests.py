@@ -3,6 +3,7 @@ from django.urls import reverse
 from .models import Article
 from .forms import SearchForm
 
+
 class IndexViewTest(TestCase):
     def setUp(self):
         self.article1 = Article.objects.create(title='Test Article 1', text='Test text 1', author='Author 1')
@@ -26,8 +27,7 @@ class IndexViewTest(TestCase):
         self.assertIsInstance(response.context['form'], SearchForm)
         self.assertQuerySetEqual(
             response.context['articles'].order_by('id'),
-            Article.objects.filter(title__icontains='Test').order_by('id') |
-            Article.objects.filter(text__icontains='Test').order_by('id'),
+            Article.objects.filter(title__icontains='Test').order_by('id') | Article.objects.filter(text__icontains='Test').order_by('id'),
             transform=lambda x: x
         )
 

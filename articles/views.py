@@ -36,7 +36,7 @@ def add(request):
         text = request.POST.get('text')
         author = request.POST.get('author')
         article = Article.objects.create(title=title, text=text, author=author)
-        return redirect('article_detail', id=article.id) 
+        return redirect('article_detail', id=article.id)
     return render(request, "add.html")
 
 
